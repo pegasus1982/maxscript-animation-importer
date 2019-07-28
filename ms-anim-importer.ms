@@ -23,10 +23,10 @@ rollout CustomAnimationImporter "Custom Animation Importer"
     button btn_Import "Import" pos:[80, 345] width:160 height:30
     -- end rollout ui
 
+    local dataFields
     -- configure field select options
     fn setFieldSelectOptions data = (
-        print "set field select option"
-        print data
+        dataFields = data
         drop_xPositionField.items = data
         drop_yPositionField.items = data
         drop_zPositionField.items = data
