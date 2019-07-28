@@ -22,6 +22,20 @@ rollout CustomAnimationImporter "Custom Animation Importer"
 
     button btn_Import "Import" pos:[80, 345] width:160 height:30
     -- end rollout ui
+
+    -- open file dialog
+    on btn_Browse pressed do (
+        dlg = dotNetObject "System.Windows.Forms.OpenFileDialog"
+        dlg.title = "Please select a CSV file to get point data"
+        dlg.Multiselect = false
+        dlg.Filter = "CSV files (*.csv)|*.csv|All Files (*.*)|*.*"
+        result = dlg.showDialog()
+        if(result.Equals result.OK) do(
+            edit_FilePath.text = dlg.fileName
+            readDataFile dlg.fileName
+        )
+    )
+    -- end open file dialog
 )
 
 createdialog CustomAnimationImporter width:320 height:390
