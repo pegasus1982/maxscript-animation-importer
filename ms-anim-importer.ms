@@ -23,6 +23,48 @@ rollout CustomAnimationImporter "Custom Animation Importer"
     button btn_Import "Import" pos:[80, 345] width:160 height:30
     -- end rollout ui
 
+    -- configure field select options
+    fn setFieldSelectOptions data = (
+        print "set field select option"
+        print data
+    )
+    -- end configure field select options
+
+    -- read data from csv
+    fn readDataFile path = (
+        AssyFile = openfile path
+        if (AssyFile != undefined) then
+        (
+            print "Read file"
+            str = readline AssyFile
+            fields = filterstring str "," splitEmptyTokens:true
+            setFieldSelectOptions(fields)
+            -- skiptonextline AssyFile
+            -- while not eof AssyFile do(
+            --     str = readline AssyFile
+            --     if str == ",,,,,,,,,,,," or str == "" do(continue)
+            --     newStr = filterstring str "," splitEmptyTokens:true
+                
+            --     rightID = newStr[1] as Integer
+            --     rightX  = newStr[2] as float
+            --     rightY  = newStr[3] as float--format "right -> id : % , x : % , y : %\n" rightID rightX rightY
+
+            --     leftID  = newStr[8] as Integer
+            --     leftX   = newStr[9] as float
+            --     leftY   = newStr[10] as float
+            --     --format "left ->  id : % , x : % , y : %\n" leftID leftX leftY
+
+            --     newLeftArrayItem = #(leftID, leftX, leftY)
+            --     newRightArrayItem = #(rightID, rightX, rightY)
+                
+            --     append originLeftPointArray newLeftArrayItem
+            --     append originRightPointArray newRightArrayItem
+            -- )
+        )
+        else( messageBox "Open Failed" title:"Error!" )
+    )
+    -- end read data from csv
+
     -- open file dialog
     on btn_Browse pressed do (
         dlg = dotNetObject "System.Windows.Forms.OpenFileDialog"
