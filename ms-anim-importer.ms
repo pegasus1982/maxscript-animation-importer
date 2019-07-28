@@ -10,15 +10,15 @@ rollout CustomAnimationImporter "Custom Animation Importer"
 
     groupBox group_PositionImport "Position" pos:[10, 110] width: 300 height: 105
     checkbox check_PositionImport "Import Position Info" pos:[22, 130] checked:true
-    dropdownlist drop_xPositionField "X Position Field" pos:[22, 160] width:92 items:#("1/2", "1/4", "1/8", "1/16")
-    dropdownlist drop_yPositionField "Y Position Field" pos:[117, 160] width:92 items:#("1/2", "1/4", "1/8", "1/16")
-    dropdownlist drop_zPositionField "Z Position Field" pos:[212, 160] width:92 items:#("1/2", "1/4", "1/8", "1/16")
+    dropdownlist drop_xPositionField "X Position Field" pos:[22, 160] width:92
+    dropdownlist drop_yPositionField "Y Position Field" pos:[117, 160] width:92
+    dropdownlist drop_zPositionField "Z Position Field" pos:[212, 160] width:92
 
     groupBox group_RotationImport "Rotation" pos:[10, 225] width: 300 height: 105
     checkbox check_RotationImport "Import Rotation Info" pos:[22, 245] checked:true
-    dropdownlist drop_xRotationField "X Rotation Field" pos:[22, 275] width:92 items:#("1/2", "1/4", "1/8", "1/16")
-    dropdownlist drop_yRotationField "Y Rotation Field" pos:[117, 275] width:92 items:#("1/2", "1/4", "1/8", "1/16")
-    dropdownlist drop_zRotationField "Z Rotation Field" pos:[212, 275] width:92 items:#("1/2", "1/4", "1/8", "1/16")
+    dropdownlist drop_xRotationField "X Rotation Field" pos:[22, 275] width:92
+    dropdownlist drop_yRotationField "Y Rotation Field" pos:[117, 275] width:92
+    dropdownlist drop_zRotationField "Z Rotation Field" pos:[212, 275] width:92
 
     button btn_Import "Import" pos:[80, 345] width:160 height:30
     -- end rollout ui
