@@ -1,8 +1,8 @@
 rollout CustomAnimationImporter "Custom Animation Importer"
 (
     -- rollout ui
-    editText    edit_FilePath "File Name" pos:[24,  15] width:200
-    button      btn_Browse "Browse..." pos:[240, 13]
+    editText    edit_FilePath "File Name" pos:[13,  15] width:225
+    button      btn_Browse "Browse..." pos:[245, 13]
 
     groupBox group_targets "Targets" pos:[10, 40] width: 300 height: 60
     checkbutton btn_PickObject "Pick Object" pos:[22, 62] width:100
