@@ -55,18 +55,41 @@ rollout CustomAnimationImporter "Custom Animation Importer"
                 
                 append rawData newStr
             )
-            print rawData
         )
         else( messageBox "Open Failed" title:"Error!" )
     )
     -- end read data from csv
 
     -- get position info from raw data
-    fn getPosition i = ()
+    fn getPosition i = (
+        dataItem = rawData[i]
+
+        indexPosX = drop_xPositionField.selection
+        indexPosY = drop_yPositionField.selection
+        indexPosZ = drop_zPositionField.selection
+
+        posX = dataItem[indexPosX] as float
+        posY = dataItem[indexPosY] as float
+        posZ = dataItem[indexPosZ] as float
+
+        return [posX, posY, posZ]
+    )
     -- end get position info from raw data
 
     -- get rotation info from raw data
-    fn getRotation i = ()
+    fn getRotation i = (
+        dataItem = rawData[i]
+
+        indexRotX = drop_xRotationField.selection
+        indexRotY = drop_yRotationField.selection
+        indexRotZ = drop_zRotationField.selection
+
+        rotX = dataItem[indexRotX] as float
+        rotY = dataItem[indexRotY] as float
+        rotZ = dataItem[indexRotZ] as float
+
+        return [cos rotX, cos rotY, cos rotZ]
+    )
     -- end get rotation info from raw data
 
     -- open file dialog
@@ -98,16 +121,17 @@ rollout CustomAnimationImporter "Custom Animation Importer"
 
         if (rawData != undefined) do (
             local keyCount = rawData.count
+            -- keyCount = 1
             with animate on (
-                for i = 1 to keyCount do (
-                    at time i (
+                for i = 1 to (keyCount-1) do (
+                    at time (i-1) (
                         if (check_PositionImport.checked == true) do (
-                            pos = getPosition(i)
+                            pos = getPosition(i+1)
+                            target_object.position = pos
                         )
                         if (check_RotationImport.checked == true) do (
-                            rot = getRotation(i)
-                            -- rot_box = eulerangles 0 30 0
-                            -- rotate target_object rot_box
+                            rot = getRotation(i+1)
+                            target_object.dir = rot
                         )
                     )
                 )
