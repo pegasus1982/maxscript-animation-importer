@@ -61,6 +61,14 @@ rollout CustomAnimationImporter "Custom Animation Importer"
     )
     -- end read data from csv
 
+    -- get position info from raw data
+    fn getPosition i = ()
+    -- end get position info from raw data
+
+    -- get rotation info from raw data
+    fn getRotation i = ()
+    -- end get rotation info from raw data
+
     -- open file dialog
     on btn_Browse pressed do (
         dlg = dotNetObject "System.Windows.Forms.OpenFileDialog"
@@ -82,6 +90,28 @@ rollout CustomAnimationImporter "Custom Animation Importer"
                 edit_TargetObject.text = target_object.name
                 btn_PickObject.checked = false;
             ) catch ()
+        )
+    )
+
+    on btn_Import pressed do (
+        target_object.position = [0, 0, 0]
+
+        if (rawData != undefined) do (
+            local keyCount = rawData.count
+            with animate on (
+                for i = 1 to keyCount do (
+                    at time i (
+                        if (check_PositionImport.checked == true) do (
+                            pos = getPosition(i)
+                        )
+                        if (check_RotationImport.checked == true) do (
+                            rot = getRotation(i)
+                            -- rot_box = eulerangles 0 30 0
+                            -- rotate target_object rot_box
+                        )
+                    )
+                )
+            )
         )
     )
 )
