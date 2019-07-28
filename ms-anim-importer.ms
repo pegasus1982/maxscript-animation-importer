@@ -27,6 +27,13 @@ rollout CustomAnimationImporter "Custom Animation Importer"
     fn setFieldSelectOptions data = (
         print "set field select option"
         print data
+        drop_xPositionField.items = data
+        drop_yPositionField.items = data
+        drop_zPositionField.items = data
+
+        drop_xRotationField.items = data
+        drop_yRotationField.items = data
+        drop_zRotationField.items = data
     )
     -- end configure field select options
 
