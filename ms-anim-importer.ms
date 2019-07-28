@@ -23,6 +23,7 @@ rollout CustomAnimationImporter "Custom Animation Importer"
     button btn_Import "Import" pos:[80, 345] width:160 height:30
     -- end rollout ui
 
+    global target_object
     local dataFields
     -- configure field select options
     fn setFieldSelectOptions data = (
@@ -85,6 +86,16 @@ rollout CustomAnimationImporter "Custom Animation Importer"
         )
     )
     -- end open file dialog
+
+    on btn_PickObject changed state do (
+        if state == true do (
+            try (
+                target_object = pickobject propt:"Pick surface"
+                edit_TargetObject.text = target_object.name
+                btn_PickObject.checked = false;
+            ) catch ()
+        )
+    )
 )
 
 createdialog CustomAnimationImporter width:320 height:390
